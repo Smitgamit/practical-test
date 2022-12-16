@@ -58,17 +58,29 @@ function App() {
     gender: '',
     maritalStatus: ''
   })
+  const [page, setPage] = useState(0)
   const onChangeHandler = (event) => {
     const { name, value } = event.target
     console.log(name);
     setUserData((prevState) => ({ ...prevState, [name]: value }))
   }
+  const submitHandler = (event) => {
+    event.preventDefault();
+    setPage(1)
+
+  }
   return (
     <div>
-      <UserForm
-        onChangeHandler={onChangeHandler}
-        userData={userData}
-      />
+      {
+        page === 0 ?
+          <UserForm
+            onChangeHandler={onChangeHandler}
+            submitHandler={submitHandler}
+            userData={userData}
+          /> :
+          <UserDetails userData={userData} />
+      }
+
       {/* <UserDetails userData={userData} /> */}
     </div>
   );

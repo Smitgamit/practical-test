@@ -3,11 +3,6 @@ import InputField from './InputField'
 import UserDetails from './UserDetails'
 
 export default function UserForm({ onChangeHandler, ...props }) {
-    const submitHandler = (event) => {
-        event.preventDefault();
-        console.log(props.userData);
-        return (<UserDetails userData={props.userData} />)
-    }
     return (
         <section className='py-5'>
             <div className='container'>
@@ -130,7 +125,7 @@ export default function UserForm({ onChangeHandler, ...props }) {
                             </div>
                         </div>
                         <div className='col-md-12'>
-                            <button onClick={submitHandler} className="btn btn-primary">Next</button>
+                            <button onClick={props.submitHandler} className="btn btn-primary">Next</button>
                         </div>
                     </div>
                 </form>
