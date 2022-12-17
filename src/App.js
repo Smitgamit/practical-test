@@ -14,6 +14,12 @@ function App() {
       message: "Please enter first name.",
     },
     {
+      field: "middleName",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter middle name.",
+    },
+    {
       field: "lastName",
       method: "isEmpty",
       validWhen: false,
@@ -32,17 +38,41 @@ function App() {
       message: "Please enter valid email.",
     },
     {
+      field: "birthday",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter birthday.",
+    },
+    {
+      field: "age",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter age.",
+    },
+    {
+      field: "bloodGroup",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter bloodGroup.",
+    },
+    {
       field: "mobileNo",
       method: "isEmpty",
       validWhen: false,
       message: "Please enter phone number.",
     },
-    // {
-    //   field: "contactMessage",
-    //   method: "isEmpty",
-    //   validWhen: false,
-    //   message: "Please enter message.",
-    // }
+    {
+      field: "height",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter height.",
+    },
+    {
+      field: "weight",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter weight.",
+    }
   ]);
   const [userData, setUserData] = useState({
     firstName: '',
