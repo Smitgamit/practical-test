@@ -4,6 +4,7 @@ import UserForm from './components/UserForm';
 import { useState } from 'react';
 import UserDetails from './components/UserDetails';
 import FormValidator from './components/FormValidator';
+import AddressForm from './components/AddressForm';
 
 function App() {
   const validator = new FormValidator([
@@ -74,13 +75,51 @@ function App() {
       message: "Please enter weight.",
     }
   ]);
+  const validatorAddress = new FormValidator([
+    {
+      field: "firstAddress",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter address line 1.",
+    },
+    {
+      field: "secondAddress",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter address line 2.",
+    },
+    {
+      field: "city",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter city.",
+    },
+    {
+      field: "state",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter state.",
+    },
+    {
+      field: "country",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter country.",
+    },
+    {
+      field: "pinCode",
+      method: "isEmpty",
+      validWhen: false,
+      message: "Please enter pin code.",
+    },
+  ])
   const [userData, setUserData] = useState({
     firstName: '',
     middleName: '',
     lastName: '',
     mobileNo: '',
     email: '',
-    birthDay: '',
+    birthday: '',
     age: '',
     bloodGroup: '',
     height: '',
@@ -88,15 +127,30 @@ function App() {
     gender: '',
     maritalStatus: ''
   })
+  const [addressData, setAddressData] = useState({
+    firstAddress: '',
+    secondAddress: '',
+    city: '',
+    state: '',
+    country: '',
+    pinCode: '',
+  })
   const [page, setPage] = useState(0)
   const [validation, setValidation] = useState(validator.valid());
+  const [validationAddress, setValidationAddress] = useState(validatorAddress.valid());
   const [submitted, setSubmitted] = useState(false)
+  const [submittedAddress, setSubmittedAddress] = useState(false)
   const onChangeHandler = (event) => {
     const { name, value } = event.target
     // console.log(name);
     setUserData((prevState) => ({ ...prevState, [name]: value }))
   }
-  const submitHandler = (event) => {
+  const onAddressChangeHandler = (event) => {
+    const { name, value } = event.target
+    // console.log(name);
+    setAddressData((prevState) => ({ ...prevState, [name]: value }))
+  }
+  const nextPageHandler = (event) => {
     event.preventDefault();
     const validation = validator.validate(userData)
     setValidation(validation)
@@ -104,11 +158,25 @@ function App() {
     if (validation.isValid) {
       setPage(1)
     }
+  }
 
+  const submitHandler = (event) => {
+    console.log("submit");
+    event.preventDefault();
+    const validationAddress = validatorAddress.validate(addressData)
+    setValidationAddress(validationAddress)
+    setSubmittedAddress(true)
+    if (validationAddress.isValid) {
+      setPage(2)
+    }
   }
   let checkValidation = submitted
     ? validator.validate(userData)
     : validation
+
+  let checkValidationAddress = submittedAddress
+    ? validatorAddress.validate(addressData)
+    : validationAddress
   return (
     <div>
       {
@@ -116,13 +184,16 @@ function App() {
           <UserForm
             checkValidation={checkValidation}
             onChangeHandler={onChangeHandler}
-            submitHandler={submitHandler}
+            nextPageHandler={nextPageHandler}
             userData={userData}
-          /> :
-          <UserDetails userData={userData} />
+          /> : page === 1 ?
+            <AddressForm
+              addressData={addressData}
+              checkValidationAddress={checkValidationAddress}
+              submitHandler={submitHandler}
+              onAddressChangeHandler={onAddressChangeHandler}
+            /> : <UserDetails userData={{ ...userData, ...addressData }} />
       }
-
-      {/* <UserDetails userData={userData} /> */}
     </div>
   );
 }

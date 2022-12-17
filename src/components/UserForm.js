@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputField from './InputField'
 import UserDetails from './UserDetails'
 
-export default function UserForm({ onChangeHandler, checkValidation, ...props }) {
+export default function UserForm({ onChangeHandler, ...props }) {
     return (
         <section className='py-5'>
             <div className='container'>
@@ -14,180 +14,80 @@ export default function UserForm({ onChangeHandler, checkValidation, ...props })
                             value={props.firstName}
                             name={'firstName'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.firstName}
                         />
-                        <div
-                            className={
-                                checkValidation.firstName.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.firstName.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Middle name'}
                             value={props.middleName}
                             name={'middleName'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.middleName}
                         />
-                        <div
-                            className={
-                                checkValidation.middleName.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.middleName.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Last name'}
                             value={props.lastName}
                             name={'lastName'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.lastName}
                         />
-                        <div
-                            className={
-                                checkValidation.lastName.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.lastName.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Mobile no'}
                             value={props.mobileNo}
                             name={'mobileNo'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.mobileNo}
                         />
-                        <div
-                            className={
-                                checkValidation.mobileNo.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.mobileNo.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'email'}
                             placeHolder={'Email'}
                             value={props.email}
                             name={'email'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.email}
                         />
-                        <div
-                            className={
-                                checkValidation.email.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.email.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'date'}
                             placeHolder={'Birthday'}
                             value={props.birthday}
                             name={'birthday'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.birthday}
                         />
-                        <div
-                            className={
-                                checkValidation.birthday.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.birthday.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Age'}
                             value={props.age}
                             name={'age'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.age}
                         />
-                        <div
-                            className={
-                                checkValidation.age.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.age.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Blood Group'}
                             value={props.bloodGroup}
                             name={'bloodGroup'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.bloodGroup}
                         />
-                        <div
-                            className={
-                                checkValidation.bloodGroup.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.bloodGroup.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Height'}
                             value={props.height}
                             name={'height'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.height}
                         />
-                        <div
-                            className={
-                                checkValidation.height.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.height.message}
-                            </div>
-                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Weight'}
                             value={props.weight}
                             name={'weight'}
                             onChangeHandler={onChangeHandler}
+                            checkValidation={props.checkValidation.weight}
                         />
-                        <div
-                            className={
-                                checkValidation.weight.isInvalid
-                                    ? 'animated fadeIn'
-                                    : ''
-                            }
-                        >
-                            <div className="error">
-                                {checkValidation.weight.message}
-                            </div>
-                        </div>
                         <div className='col-md-6'>
                             <div>
                                 <label>Gender</label>
@@ -235,7 +135,7 @@ export default function UserForm({ onChangeHandler, checkValidation, ...props })
                             </div>
                         </div>
                         <div className='col-md-12'>
-                            <button onClick={props.submitHandler} className="btn btn-primary">Next</button>
+                            <button onClick={props.nextPageHandler} className="btn btn-primary">Next</button>
                         </div>
                     </div>
                 </form>
