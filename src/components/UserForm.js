@@ -2,7 +2,7 @@ import React from 'react'
 import InputField from './InputField'
 import UserDetails from './UserDetails'
 
-export default function UserForm({ onChangeHandler, ...props }) {
+export default function UserForm({ onChangeHandler, checkValidation, ...props }) {
     return (
         <section className='py-5'>
             <div className='container'>
@@ -15,6 +15,17 @@ export default function UserForm({ onChangeHandler, ...props }) {
                             name={'firstName'}
                             onChangeHandler={onChangeHandler}
                         />
+                        <div
+                            className={
+                                checkValidation.firstName.isInvalid
+                                    ? 'animated fadeIn'
+                                    : ''
+                            }
+                        >
+                            <div className="error">
+                                {checkValidation.firstName.message}
+                            </div>
+                        </div>
                         <InputField
                             type={'text'}
                             placeHolder={'Middle name'}

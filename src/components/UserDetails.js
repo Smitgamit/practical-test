@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function UserDetails({ userData }) {
-    // console.log('userData-->', userData);
+    console.log('userData-->', Object.keys(userData));
     return (
         <div className="container">
             <table className="table">
@@ -12,11 +12,14 @@ export default function UserDetails({ userData }) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
+                    {
+                        Object.keys(userData).map((data, keyIndex) => {
+                            return <tr>
+                                <td>{data}</td>
+                                <td>{userData[data]}</td>
+                            </tr>
+                        })
+                    }
                 </tbody>
             </table>
         </div>

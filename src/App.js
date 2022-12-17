@@ -32,17 +32,17 @@ function App() {
       message: "Please enter valid email.",
     },
     {
-      field: "phoneNumber",
+      field: "mobileNo",
       method: "isEmpty",
       validWhen: false,
       message: "Please enter phone number.",
     },
-    {
-      field: "contactMessage",
-      method: "isEmpty",
-      validWhen: false,
-      message: "Please enter message.",
-    }
+    // {
+    //   field: "contactMessage",
+    //   method: "isEmpty",
+    //   validWhen: false,
+    //   message: "Please enter message.",
+    // }
   ]);
   const [userData, setUserData] = useState({
     firstName: '',
@@ -59,21 +59,32 @@ function App() {
     maritalStatus: ''
   })
   const [page, setPage] = useState(0)
+  const [validation, setValidation] = useState(validator.valid());
+  const [submitted, setSubmitted] = useState(false)
   const onChangeHandler = (event) => {
     const { name, value } = event.target
-    console.log(name);
+    // console.log(name);
     setUserData((prevState) => ({ ...prevState, [name]: value }))
   }
   const submitHandler = (event) => {
     event.preventDefault();
-    setPage(1)
+    const validation = validator.validate(userData)
+    setValidation(validation)
+    setSubmitted(true)
+    if (validation.isValid) {
+      setPage(1)
+    }
 
   }
+  let checkValidation = submitted
+    ? validator.validate(userData)
+    : validation
   return (
     <div>
       {
         page === 0 ?
           <UserForm
+            checkValidation={checkValidation}
             onChangeHandler={onChangeHandler}
             submitHandler={submitHandler}
             userData={userData}
