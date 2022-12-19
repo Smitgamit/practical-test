@@ -2,7 +2,6 @@ import React from 'react'
 import InputField from './InputField'
 
 export default function AddressForm({ onAddressChangeHandler, ...props }) {
-    console.log('props.checkValidationAddress-->', props.checkValidationAddress);
     return (
         <section className='py-5'>
             <div className='container'>

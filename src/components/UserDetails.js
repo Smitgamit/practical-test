@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function UserDetails({ userData }) {
-    console.log('userData-->', Object.keys(userData));
     return (
         <div className="container">
             <table className="table">

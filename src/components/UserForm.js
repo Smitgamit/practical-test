@@ -93,13 +93,13 @@ export default function UserForm({ onChangeHandler, ...props }) {
                                 <label>Gender</label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="gender" id="male" value="option1" />
+                                <input onChange={onChangeHandler} className="form-check-input" type="radio" name="gender" id="male" value="male" />
                                 <label className="form-check-label" htmlFor="male">
                                     Male
                                 </label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="gender" id="female" value="option1" />
+                                <input onChange={onChangeHandler} className="form-check-input" type="radio" name="gender" id="female" value="female" />
                                 <label className="form-check-label" htmlFor="female">
                                     Female
                                 </label>
@@ -110,25 +110,25 @@ export default function UserForm({ onChangeHandler, ...props }) {
                                 <label>Marital Status</label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="marital" id="single" value="option1" />
+                                <input onChange={onChangeHandler} className="form-check-input" type="radio" name="maritalStatus" id="single" value="single" />
                                 <label className="form-check-label" htmlFor="single">
                                     Single
                                 </label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="marital" id="married" value="option1" />
+                                <input className="form-check-input" type="radio" name="maritalStatus" id="married" value="married" />
                                 <label className="form-check-label" htmlFor="married">
                                     Married
                                 </label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="marital" id="divorced" value="option1" />
+                                <input onChange={onChangeHandler} className="form-check-input" type="radio" name="maritalStatus" id="divorced" value="divorced" />
                                 <label className="form-check-label" htmlFor="divorced">
                                     Divorced
                                 </label>
                             </div>
                             <div className="form-check d-inline-block me-4 mb-4">
-                                <input className="form-check-input" type="radio" name="marital" id="widowed" value="option1" />
+                                <input onChange={onChangeHandler} className="form-check-input" type="radio" name="maritalStatus" id="widowed" value="widowed" />
                                 <label className="form-check-label" htmlFor="widowed">
                                     Widowed
                                 </label>

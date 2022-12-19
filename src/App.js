@@ -161,7 +161,6 @@ function App() {
   }
 
   const submitHandler = (event) => {
-    console.log("submit");
     event.preventDefault();
     const validationAddress = validatorAddress.validate(addressData)
     setValidationAddress(validationAddress)
